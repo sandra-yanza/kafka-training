@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: devp
+  application:
+    name: kafka-training
+  datasource:
+    url: jdbc:postgresql://localhost:5432/develop
+    username: admin
+    password: admin123
+    driver-class-name: org.postgresql.Driver
+
+kafka:
+  consumer:
+    bootstrap-servers: "localhost:9093"
