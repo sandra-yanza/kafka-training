@@ -7,7 +7,7 @@
   },
   
   "dockerComposeFile": "docker-compose.yml",
-  "service": "kafka",
+  "service": "redpanda-console",
 
   "customizations": {
     "vscode": {
