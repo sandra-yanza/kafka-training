@@ -1,16 +1,13 @@
 {
   "name": "Kafka Training",
-   "hostRequirements": {
-      "cpus": 4
-  },
-  "image": "mcr.microsoft.com/devcontainers/java:1-21",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+	
+ "features": {
     "ghcr.io/devcontainers/features/java:1": {
-			"version": "none",
-			"installGradle": "true"
-		}
-  },
+      "version": "21"
+    }
+  },	
+
+	
   "customizations": {
     "vscode": {
       "extensions": [
