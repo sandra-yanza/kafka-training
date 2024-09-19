@@ -4,7 +4,9 @@
       "cpus": 4
   },
   "features": {
-    "ghcr.io/devcontainers/features/java:1-21"
+    "ghcr.io/devcontainers/features/java:1.6.0": {
+      "version": "21"
+    }
   },
 
   "customizations": {
