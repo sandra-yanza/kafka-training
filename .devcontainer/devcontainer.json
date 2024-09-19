@@ -14,12 +14,12 @@
       "extensions": [
         "vscjava.vscode-java-pack",
         "ms-azuretools.vscode-docker",
-        "pkief.material-icon-theme"
+        "AtomMaterial.a-file-icon-vscode"
       ],
       "settings": {
         "workbench.colorTheme": "Default Dark+",
         "workbench.preferredDarkColorTheme": "Default Dark+",
-        "workbench.iconTheme": "material-icon-theme"
+        "workbench.iconTheme": "atom-material-icon"
       }
     }
   }
