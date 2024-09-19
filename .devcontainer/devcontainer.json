@@ -1,6 +1,16 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "name": "Kafka Training Development Environment Ready To Use",
   "features": {
-    "ghcr.io/devcontainers/features/java:1-21": {}
-  }
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack"
+      ]
+    }
+  },
+  "postCreateCommand": "java -version"
 }
