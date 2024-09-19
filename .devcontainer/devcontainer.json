@@ -19,7 +19,7 @@
       "settings": {
         "workbench.colorTheme": "Default Dark+",
         "workbench.preferredDarkColorTheme": "Default Dark+",
-        "workbench.iconTheme": "atom-material-icon"
+        "workbench.iconTheme": "a-file-icon-vscode"
       }
     }
   }
