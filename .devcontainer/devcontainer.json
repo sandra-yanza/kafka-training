@@ -9,11 +9,13 @@
     "vscode": {
       "extensions": [
         "vscjava.vscode-java-pack",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "pkief.material-icon-theme"
       ],
       "settings": {
         "workbench.colorTheme": "Default Dark+",
-        "workbench.preferredDarkColorTheme": "Default Dark+"
+        "workbench.preferredDarkColorTheme": "Default Dark+",
+        "workbench.iconTheme": "material-icon-theme"
       }
     }
   }
