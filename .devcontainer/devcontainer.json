@@ -5,9 +5,6 @@
       "version": "21"
     }
   },
-  
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "redpanda-console",
 
   "customizations": {
     "vscode": {
