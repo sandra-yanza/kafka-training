@@ -3,7 +3,7 @@
 	
  "features": {
     "ghcr.io/devcontainers/features/java:1": {
-      "version": "21"
+      "version": "latest"
     }
   },	
 
@@ -12,14 +12,8 @@
     "vscode": {
       "extensions": [
         "vscjava.vscode-java-pack",
-        "ms-azuretools.vscode-docker",
-        "AtomMaterial.a-file-icon-vscode"
-      ],
-      "settings": {
-        "workbench.colorTheme": "Default Dark+",
-        "workbench.preferredDarkColorTheme": "Default Dark+",
-        "workbench.iconTheme": "a-file-icon-vscode"
-      }
+        "ms-azuretools.vscode-docker"
+      ]
     }
   }
 }
