@@ -1,5 +1,8 @@
 {
   "name": "Kafka Training",
+   "hostRequirements": {
+      "cpus": 4
+  },
   "features": {
     "ghcr.io/devcontainers/features/java:1": {
       "version": "21"
