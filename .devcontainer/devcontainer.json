@@ -10,7 +10,7 @@
       "installGradle": "true"
     },
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-  }
+  },
  
 
 	
