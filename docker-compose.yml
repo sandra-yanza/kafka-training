@@ -26,6 +26,8 @@ services:
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
     depends_on:
       - zookeeper
+      - postgres
+      - redpanda-console
 
   postgres:
     image: postgres:14-alpine
