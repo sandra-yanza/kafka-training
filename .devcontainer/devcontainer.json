@@ -5,6 +5,10 @@
       "version": "21"
     }
   },
+  
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "devcontainer",
+  
   "customizations": {
     "vscode": {
       "extensions": [
