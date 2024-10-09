@@ -1,6 +1,6 @@
 package co.example.kafkatraining.producers;
 
-import co.example.kafkatraining.model.InventoryAlert;
+import co.example.kafkatraining.model.LowStock;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -11,16 +11,16 @@ import java.util.concurrent.CompletableFuture;
 
 @Component
 @RequiredArgsConstructor
-public class InventoryAlertProducer {
+public class LowStockProducer {
 
     private static final String TOPIC_NAME = "inventory_alerts";
 
-    private final KafkaTemplate<String, InventoryAlert> kafkaTemplate;
+    private final KafkaTemplate<String, LowStock> kafkaTemplate;
 
-    public void send(InventoryAlert message) {
+    public void send(LowStock message) {
 
 
-        CompletableFuture<SendResult<String, InventoryAlert>> result = kafkaTemplate.send(TOPIC_NAME, message.id(), message);
+        CompletableFuture<SendResult<String, LowStock>> result = kafkaTemplate.send(TOPIC_NAME, message.id(), message);
 
         result.thenAccept((insufficientStockSendResult) -> {
             System.out.println("Sent sample message [" + message + "] to " + TOPIC_NAME);

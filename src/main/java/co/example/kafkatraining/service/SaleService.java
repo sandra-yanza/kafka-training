@@ -3,11 +3,11 @@ package co.example.kafkatraining.service;
 import co.example.kafkatraining.jpa.entity.ItemEntity;
 import co.example.kafkatraining.jpa.repository.ItemRepository;
 import co.example.kafkatraining.model.InsufficientStock;
-import co.example.kafkatraining.model.InventoryAlert;
+import co.example.kafkatraining.model.LowStock;
 import co.example.kafkatraining.model.Item;
 import co.example.kafkatraining.model.Sale;
 import co.example.kafkatraining.producers.InsufficientStockProducer;
-import co.example.kafkatraining.producers.InventoryAlertProducer;
+import co.example.kafkatraining.producers.LowStockProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ import java.util.Optional;
 public class SaleService {
 
     private final ItemRepository repository;
-    private final InventoryAlertProducer inventoryAlertProducer;
+    private final LowStockProducer lowStockProducer;
     private final InsufficientStockProducer insufficientStockProducer;
 
     public void process(Sale sale) {
@@ -51,14 +51,14 @@ public class SaleService {
 
 
                 if (itemEntity.getQuantity() < 100 ){
-                    InventoryAlert message = InventoryAlert.builder()
+                    LowStock message = LowStock.builder()
                             .id(item.id())
                             .saleId(sale.saleId())
                             .customerId(sale.customerId())
                             .descripcion("Inventory near out of stock %s".formatted(itemEntity.getQuantity()))
                             .build();
 
-                    inventoryAlertProducer.send(message);
+                    lowStockProducer.send(message);
                 }
 
 
