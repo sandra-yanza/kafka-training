@@ -1,4 +1,4 @@
-package co.example.kafkatraining.model;
+package co.example.kafkatraining.schemas;
 
 import lombok.Builder;
 

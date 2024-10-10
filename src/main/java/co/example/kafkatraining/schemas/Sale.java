@@ -1,4 +1,4 @@
-package co.example.kafkatraining.model;
+package co.example.kafkatraining.schemas;
 
 import java.time.LocalDate;
 import java.util.List;
