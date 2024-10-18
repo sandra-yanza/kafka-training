@@ -26,7 +26,6 @@ public class InsufficientStockProducer {
 
         CompletableFuture<SendResult<String, InsufficientStock>> result = kafkaTemplate.send(TOPIC_NAME, message.id(),message);
 
-
         result.thenAccept((insufficientStockSendResult)->{
             log.info("Sent sample message [{}] to " + TOPIC_NAME, message);
         });

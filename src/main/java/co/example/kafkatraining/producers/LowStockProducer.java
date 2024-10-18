@@ -21,17 +21,7 @@ public class LowStockProducer {
 
     public void send(LowStock message) {
 
-
-        CompletableFuture<SendResult<String, LowStock>> result = kafkaTemplate.send(TOPIC_NAME, message.id(), message);
-
-        result.thenAccept((insufficientStockSendResult) -> {
-            log.info("Sent sample message [{}] to " + TOPIC_NAME, message);
-        });
-
-        result.exceptionally(ex -> {
-            log.error("Error al enviar el mensaje: {}", ex.getMessage());
-            return null;
-        });
+        kafkaTemplate.send(TOPIC_NAME, message.id(), message);
 
     }
 
