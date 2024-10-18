@@ -41,6 +41,6 @@ spring:
 
 
     listener:
-      ack-mode: record     #por defecto
+      ack-mode: record     #por defecto es en BATCH
 
 
