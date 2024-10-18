@@ -16,12 +16,16 @@ public class InsufficientStockProducer {
 
     private static final String TOPIC_NAME = "INSUFFICIENT_STOCK";
 
+
     private final KafkaTemplate<String, InsufficientStock> kafkaTemplate;
+
+
 
     public void send(InsufficientStock message) {
 
 
         CompletableFuture<SendResult<String, InsufficientStock>> result = kafkaTemplate.send(TOPIC_NAME, message.id(),message);
+
 
         result.thenAccept((insufficientStockSendResult)->{
             log.info("Sent sample message [{}] to " + TOPIC_NAME, message);
