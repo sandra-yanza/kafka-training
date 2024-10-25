@@ -9,13 +9,17 @@ import co.example.kafkatraining.schemas.Sale;
 import co.example.kafkatraining.producers.InsufficientStockProducer;
 import co.example.kafkatraining.producers.LowStockProducer;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class SalesHandler {
+
+    private static final int LOW_INVENTORY_QUANTITY = 100;
 
     private final ItemRepository repository;
     private final LowStockProducer lowStockProducer;
@@ -51,7 +55,7 @@ public class SalesHandler {
                 repository.save(itemEntity);
 
 
-                if (itemEntity.getQuantity() < 100 ){
+                if (itemEntity.getQuantity() < LOW_INVENTORY_QUANTITY ){
                     LowStock message5 = LowStock.builder()
                             .id(item.id())
                             .saleId(sale.saleId())

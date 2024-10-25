@@ -4,7 +4,7 @@ spring:
     name: kafka-training
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/develop
+    url: jdbc:postgresql://localhost:5433/develop
     username: admin
     password: admin123
     driver-class-name: org.postgresql.Driver
@@ -24,20 +24,47 @@ spring:
 
     consumer:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      group-id: default-group-id
-
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring:
           json:
             trusted:
               packages: '*'
 
+    refund-consumer:
+      group-id: refund-group
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: co.example.kafkatraining.schemas.Refund
+
+    sale-consumer:
+      group-id: sale-group
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: co.example.kafkatraining.schemas.Sale
+
+    item-consumer:
+      group-id: item-group
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: co.example.kafkatraining.schemas.ItemManagement
+
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       retries: 3
-
 
     listener:
       ack-mode: record     #por defecto es en BATCH
