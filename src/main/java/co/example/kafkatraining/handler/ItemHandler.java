@@ -30,15 +30,19 @@ public class ItemHandler {
 
         try {
 
+            //Validar que la información del artículo esté completa (nombre, precio, SKU, etc.)
             validateItem(itemManagement);
 
+            //Permitir añadir, modificar y eliminar artículos
             switch (itemManagement.typeOperation()) {
                 case "CREATE":
                     createItem(itemManagement);
+                    //Generar alertas de inventario
                     validateInventoryAlerts(itemManagement);
                     break;
                 case "MODIFY":
                     modifyItem(itemManagement);
+                    //Generar alertas de inventario
                     validateInventoryAlerts(itemManagement);
                     break;
                 case "DELETE":
@@ -86,6 +90,7 @@ public class ItemHandler {
                 itemEntity.setName(itemManagement.name());
                 itemEntity.setPrice(itemManagement.price());
 
+                //Actualizar el inventario cuando se modifica un artículo
                 itemRepository.save(itemEntity);
                 log.info("Item modified with Id: {}.", itemManagement.id());
             } else {
@@ -103,6 +108,7 @@ public class ItemHandler {
     private void createItem(ItemManagement itemManagement) {
 
         try {
+            //Evitar duplicados basados en SKU u otro identificador único
             idempotentItem(itemManagement);
 
             ItemEntity itemNew = ItemEntity.builder()

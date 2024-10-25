@@ -39,10 +39,12 @@ public class RefundHandler {
 
                 Optional<ItemEntity> entityOpt = itemRepository.findById(item.id());
 
+                //Verificar que el pedido existe y es elegible para reembolso
                 if (entityOpt.isPresent()) {
 
                     ItemEntity itemEntity = entityOpt.get();
 
+                    //Actualizar el inventario si es necesario
                     itemEntity.incrementQuantity(item.quantity());
 
                     itemRepository.save(itemEntity);
@@ -58,6 +60,7 @@ public class RefundHandler {
                         highStockProducer.send(highStock);
                     }
 
+                    //Calcular el monto correcto a reembolsar
                     amountRefund += item.quantity() * item.value();
 
                 } else {
@@ -72,6 +75,7 @@ public class RefundHandler {
                     .refundDate(refund.refundDate())
                     .build();
 
+            //Registrar el reembolso en el sistema
             refundRepository.save(refundEntity);
 
         } catch (Exception e) {

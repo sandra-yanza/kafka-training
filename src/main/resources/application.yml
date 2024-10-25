@@ -61,6 +61,16 @@ spring:
               default:
                 type: co.example.kafkatraining.schemas.ItemManagement
 
+    insufficient-consumer:
+      group-id: insufficient-stock-group
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: co.example.kafkatraining.schemas.InsufficientStock
+
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

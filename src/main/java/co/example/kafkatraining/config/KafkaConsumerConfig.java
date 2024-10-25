@@ -1,5 +1,6 @@
 package co.example.kafkatraining.config;
 
+import co.example.kafkatraining.schemas.InsufficientStock;
 import co.example.kafkatraining.schemas.ItemManagement;
 import co.example.kafkatraining.schemas.Refund;
 import co.example.kafkatraining.schemas.Sale;
@@ -46,6 +47,15 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, InsufficientStock> insufficientStockKafkaListenerContainerFactory(
+            ConsumerFactory<String, InsufficientStock> consumerFactory) {
+        ConcurrentKafkaListenerContainerFactory<String, InsufficientStock> factory =
+                new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(consumerFactory);
+        return factory;
+    }
+
+    @Bean
     public ConsumerFactory<String, Sale> saleConsumerFactory() {
         Map<String, Object> props = new HashMap<>(KafkaConsumerConfig.commonConsumerProperties());
         props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, "co.example.kafkatraining.schemas.Sale");
@@ -63,6 +73,13 @@ public class KafkaConsumerConfig {
     public ConsumerFactory<String, ItemManagement> itemManagementConsumerFactory() {
         Map<String, Object> props = new HashMap<>(KafkaConsumerConfig.commonConsumerProperties());
         props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, "co.example.kafkatraining.schemas.ItemManagement");
+        return new DefaultKafkaConsumerFactory<>(props);
+    }
+
+    @Bean
+    public ConsumerFactory<String, InsufficientStock> insufficientStockConsumerFactory() {
+        Map<String, Object> props = new HashMap<>(KafkaConsumerConfig.commonConsumerProperties());
+        props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, "co.example.kafkatraining.schemas.InsufficientStock");
         return new DefaultKafkaConsumerFactory<>(props);
     }
 
